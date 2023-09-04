@@ -5,9 +5,15 @@ let no_name_warning = `<div class="alert alert-danger alert-dismissible fade sho
 You didn't input a name for your item!
 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>`
-
-let getListingInfo = function(html) {
-    $.get('')
+let getEbayData = async function(){
+    const options = {
+        method:"POST",
+        mode:"no-cors",
+        body:"wefwefewf"
+      }
+    let response = await fetch("http://localhost:5000/munalyze",options)
+    let html = await response.text()
+    console.log(html)
 }
 
 $("#summary-plot-btn").on("click touchstart",()=>{
@@ -23,6 +29,7 @@ $("#summary-plot-btn").on("click touchstart",()=>{
     console.log($("#item-name").val());
     console.log($("#item-tags").val());
     console.log($("#listing-sums").val());
+    getEbayData()
     if($("#listing-sums").val()=="five"){
 
     } else if($("#listing-sums").val()=="ten"){
@@ -34,7 +41,6 @@ $("#summary-plot-btn").on("click touchstart",()=>{
     } else if($("#listing-sums").val()=="hundred"){
         //Nothing here atm
     }
-
     // Declare the chart dimensions and margins.
     $("#plot-area").empty()
     const width = window.innerWidth;
