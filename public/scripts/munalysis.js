@@ -6,15 +6,69 @@ You didn't input a name for your item!
 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>`
 
+let getListingInfo = function(html) {
+    $.get('')
+}
+
 $("#summary-plot-btn").on("click touchstart",()=>{
     let item_name = $("#item-name").val();
-    let item_tag = $("#item-tags").val()
+    let item_tag = $("#item-tags").val();
+    let listing_date = $("#listing-sums").val();
     if (!item_name) { //Check if we have an item name
         if(!$("#no-name-alert").length){ //Without this check there'd be infinite warnings and that isn't good
-            $("#input-area").append(no_name_warning)
+            $("#input-area").append(no_name_warning);
         }
-        return
+        return;
     }
-    console.log($("#item-name").val())
-    console.log($("#item-tags").val())
+    console.log($("#item-name").val());
+    console.log($("#item-tags").val());
+    console.log($("#listing-sums").val());
+    if($("#listing-sums").val()=="five"){
+
+    } else if($("#listing-sums").val()=="ten"){
+
+    } else if($("#listing-sums").val()=="twentyfive"){
+
+    } else if($("#listing-sums").val()=="fifty"){
+
+    } else if($("#listing-sums").val()=="hundred"){
+        //Nothing here atm
+    }
+
+    // Declare the chart dimensions and margins.
+    $("#plot-area").empty()
+    const width = window.innerWidth;
+    const height = 400;
+    const marginTop = 20;
+    const marginRight = 60;
+    const marginBottom = 30;
+    const marginLeft = 20;
+
+    // Declare the x (horizontal position) scale.
+    const x = d3.scaleLinear()
+        .domain([0, 1000])
+        .range([marginLeft, (width - marginRight)*.8]);
+
+    // Declare the y (vertical position) scale.
+    const y = d3.scaleLinear()
+        .domain([0, 100])
+        .range([height - marginBottom, marginTop]);
+
+    // Create the SVG container.
+    const svg = d3.create("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+    // Add the x-axis.
+    svg.append("g")
+        .attr("transform", `translate(0,${height - marginBottom})`)
+        .call(d3.axisBottom(x));
+
+    // Add the y-axis.
+    svg.append("g")
+        .attr("transform", `translate(${marginLeft},0)`)
+        .call(d3.axisLeft(y));
+
+    // Append the SVG element.
+    $("#plot-area").append(svg.node());
 })
