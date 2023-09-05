@@ -45,15 +45,10 @@ $("#summary-plot-btn").on("click touchstart",async(e)=>{
         }
         return;
     }
-    console.log(item_name);
-    console.log(item_tag);
-    console.log(listing_date);
     let product_data = await getEbayDOM(item_name,item_tag,listing_date)
     let binWidth = (Math.max(...product_data)-Math.min(...product_data))/20
     // Declare the chart dimensions and margins.
     $("#plot-area").empty()
-    const dmax = product_data.reduce((a, b) => Math.max(a, b), -Infinity);
-    console.log(dmax)
-    const plot = Plot.rectY({length: dmax}, Plot.binX({y: "count"}, {x: product_data})).plot()
+    const plot = Plot.rectY({length: 10000}, Plot.binX({y: "count"}, {x: product_data})).plot()
     $("#plot-area").append(plot)
 })
