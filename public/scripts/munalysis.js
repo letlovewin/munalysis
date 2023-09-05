@@ -28,9 +28,10 @@ let getEbayDOM = async function(term,item_tag,item_nums){
     let price_dataset = []
     $(n_html).find('.s-item__price').each(function(i,obj){
         let price = $(this).text().trim();
-        price_dataset.push(parseFloat(price.slice(1)))
-    })
-    console.log(price_dataset)
+        if (!isNaN(parseFloat(price.slice(1)))){ //Some issues with unsold item listings showing up as NaN.
+            price_dataset.push(parseFloat(price.slice(1)))
+        }
+    }) 
     return price_dataset
 }
 
@@ -46,9 +47,23 @@ $("#summary-plot-btn").on("click touchstart",async(e)=>{
         return;
     }
     let product_data = await getEbayDOM(item_name,item_tag,listing_date)
-    let binWidth = (Math.max(...product_data)-Math.min(...product_data))/20
+    let xbar = mean(product_data)
+    let m = median(product_data)
+    let stdev = sampleStandardDeviation(product_data)
     // Declare the chart dimensions and margins.
     $("#plot-area").empty()
     const plot = Plot.rectY({length: 10000}, Plot.binX({y: "count"}, {x: product_data})).plot()
     $("#plot-area").append(plot)
+    $("#plot-area").append(`
+    <div class="row">
+        <div class="col">
+            <p>x̄=$${xbar}</p>
+        </div>
+        <div class="col">
+            <p>x ~=$${m}</p>
+        </div>
+        <div class="col">
+            <p>Sₓ=$${stdev}</p>
+        </div>
+    </div>`)
 })
