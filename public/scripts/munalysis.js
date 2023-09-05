@@ -9,7 +9,7 @@ You didn't input a name for your item!
 let apikey = "18d5825806bbf02d24f4b6628923affb"
 
 let getEbayDOM = async function(term,item_tag,item_nums){
-    let active_link = `http://api.scraperapi.com/?api_key=${apikey}&url=https://www.ebay.com/sch/i.html?_from=R40&_trksid=p4432023.m560.l1313&_nkw=${encodeURIComponent(term)}`
+    let active_link = `https://api.scraperapi.com/?api_key=${apikey}&url=https://www.ebay.com/sch/i.html?_from=R40&_trksid=p4432023.m560.l1313&_nkw=${encodeURIComponent(term)}`
     if (item_tag=="sold"){
         active_link = active_link+`&LH_Complete=1`
     }
