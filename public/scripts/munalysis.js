@@ -75,10 +75,3 @@ $("#summary-plot-btn").on("click touchstart",async(e)=>{
         </div>
     </div>`)
 })
-
-$("#image-item-submit").change(function(e) {
-    e.preventDefault()
-    classifier.classify(document.getElementById("image-item-submit").files[0], (err, results) => {
-        console.log(results);
-    });
-});
