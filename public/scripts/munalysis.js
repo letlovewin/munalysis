@@ -59,19 +59,25 @@ $("#summary-plot-btn").on("click touchstart",async(e)=>{
     let m = median(product_data)
     let stdev = sampleStandardDeviation(product_data)
     // Declare the chart dimensions and margins.
-    const plot = await Plot.rectY({length: 10000}, Plot.binX({y: "count"}, {x: product_data})).plot()
+    const plot = await Plot.rectY(
+        {length: 10000}, 
+        Plot.binX({y: "count"}, 
+        {x: 
+            product_data,
+            thresholds:12
+        })).plot()
     $("#plot-area").empty()
     $("#plot-area").append(plot)
     $("#plot-area").append(`
     <div class="row">
-        <div class="col">
-            <p>x̄=$${xbar}</p>
+        <div class="col col-12 col-sm-4">
+            <p><strong>x̄</strong>=$${xbar.toFixed(2)}</p>
         </div>
-        <div class="col">
-            <p>x ~=$${m}</p>
+        <div class="col col-12 col-sm-4">
+            <p><strong>x ~</strong>=$${m.toFixed(2)}</p>
         </div>
-        <div class="col">
-            <p>Sₓ=$${stdev}</p>
+        <div class="col col-12 col-sm-4">
+            <p><strong>Sₓ</strong>=$${stdev.toFixed(2)}</p>
         </div>
     </div>`)
 })
