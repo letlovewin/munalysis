@@ -41,10 +41,6 @@ let getEbayDOM = async function(term,item_tag,item_nums){
 
 $("#summary-plot-btn").on("click touchstart",async(e)=>{
     e.preventDefault();
-    $("#plot-area").empty()
-    $("#plot-area").append(`
-    <img class="img-fluid mx-auto" src="images/load.gif" id="loading-img">
-    `)
     let item_name = $("#item-name").val();
     let item_tag = $("#item-tags").find(":selected").val();
     let listing_date = $("#listing-sums").find(":selected").val();
@@ -54,6 +50,10 @@ $("#summary-plot-btn").on("click touchstart",async(e)=>{
         }
         return;
     }
+    $("#plot-area").empty()
+    $("#plot-area").append(`
+    <img class="img-fluid mx-auto" src="images/load.gif" id="loading-img">
+    `)
     let product_data = await getEbayDOM(item_name,item_tag,listing_date)
     let xbar = mean(product_data)
     let m = median(product_data)
