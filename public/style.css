@@ -3,3 +3,15 @@
     font-size:12px;
     margin-bottom: 4px;
 }
+
+.dotted {
+    background-image: radial-gradient(#838383 10%, transparent 10%),
+          radial-gradient(#838383 10%, transparent 10%);
+    background-color: #fff;
+    background-position: 0 0, 15px 15px;
+    background-size: 15px 15px;
+}
+
+.foreground {
+    background-color: #fff;
+}

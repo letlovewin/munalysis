@@ -11,21 +11,22 @@
         <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="shortcut icon" type="image/png" href="images/favicon.png">
     </head>
-    <body>
-        
-        <div class="container p-2 justify-content-center align-items-center h-100 text-center" style="width:90%; max-width:95%">
-            <h1 style="margin-top:12px;text-align: center;"><strong><i>μnalysis</i></strong></h1>
-            <p style="margin-top:1em;font-size:12px;margin-bottom: 1px;text-align: center;">myo͞o'naləsəs</p>
-            <p class="subtitle" style="text-align: center;">This app was made by <a href="https://instagram.com/chhscpc/">Citrus Hill's Competitive Programming team</a> for the Congressional App Challenge.</p>
-            <p>Intuitively visualize statistics for E-Bay listings and get the best information for your listing in return.</p>
-            <hr>
+    <body class="dotted justify-content-center text-center">
+        <div class="foreground container p-2 align-items-center h-100" style="width:90%; max-width:95%; margin-top:25px;">
+            <h1 style="margin-top:12px;text-align: center;color:#198754;"><strong>Intuitive visualization of eBay statistics for free.</strong></h1>
+            <h3 style="margin-top:12px;text-align: center;color:#198754;">μnalysis</h3>
+            <p style="margin-top:1em;font-size:12px;margin-bottom: 1px;text-align: center;color:#198754;">myo͞o'naləsəs</p>
+            <p class="subtitle">This app was developed by <a href="https://instagram.com/chhscpc/">Citrus Hill's Competitive Programming team</a> for the Congressional App Challenge.</p>
+        </div>
+        <br> 
+        <div class="foreground container py-2 align-items-center h-100">
+            <p>Just enter a name into the Item name container and press Plot. It's that convenient.</p>
             <div class="container" id="item-listing-data">
                 <div class="row" id="input-area">
                     <div class="col-12 col-sm-4">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="item-name" placeholder="Item name">
                             <label for="item-name">Item name</label>
-                            
                         </div>
                         <!--<input type="file" accept="image/png, image/jpeg" class="btn btn-secondary" id="image-item-submit">!-->
                         </button>
@@ -53,10 +54,9 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button type="button" class="btn btn-outline-warning btn-lg" id="summary-plot-btn">Plot</button>
+                    <button type="button" class="btn btn-outline-success btn-lg" id="summary-plot-btn">Plot</button>
                 </div>
                 <div id="plot-area" class="text-center"></div>
-                
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
