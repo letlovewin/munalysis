@@ -7,10 +7,6 @@ You didn't input a name for your item!
 </div>`
 
 let apikey = "18d5825806bbf02d24f4b6628923affb"
-function modelLoaded() {
-    console.log('Model Loaded!');
-}
-const classifier = ml5.imageClassifier('MobileNet', modelLoaded);
 
 let getEbayDOM = async function(term,item_tag,item_nums){
     let active_link = `https://api.scraperapi.com/?api_key=${apikey}&url=https://www.ebay.com/sch/i.html?_from=R40&_trksid=p4432023.m560.l1313&_nkw=${encodeURIComponent(term)}`
@@ -41,10 +37,6 @@ let getEbayDOM = async function(term,item_tag,item_nums){
 
 $("#summary-plot-btn").on("click touchstart",async(e)=>{
     e.preventDefault();
-    $("#plot-area").empty()
-    $("#plot-area").append(`
-    <img class="img-fluid mx-auto" src="images/load.gif" id="loading-img">
-    `)
     let item_name = $("#item-name").val();
     let item_tag = $("#item-tags").find(":selected").val();
     let listing_date = $("#listing-sums").find(":selected").val();
@@ -54,6 +46,10 @@ $("#summary-plot-btn").on("click touchstart",async(e)=>{
         }
         return;
     }
+    $("#plot-area").empty()
+    $("#plot-area").append(`
+    <img class="img-fluid mx-auto" src="images/load.gif" id="loading-img">
+    `)
     let product_data = await getEbayDOM(item_name,item_tag,listing_date)
     let xbar = mean(product_data)
     let m = median(product_data)
